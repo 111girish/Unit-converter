@@ -22,7 +22,7 @@
 
 // userInput(1,"cm","km");
 
-const lengthConversion = {
+export const lengthConversion = {
   mm: 0.001,
   cm: 0.01,
   m: 1,
