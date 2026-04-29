@@ -12,7 +12,7 @@ function LengthConverter() {
         <input
           value={userValue}
           onChange={(e) => {
-            setUserValue(e.target.value);
+            setUserValue(parseFloat(e.target.value) || 0);
           }}
         ></input>
         <select
