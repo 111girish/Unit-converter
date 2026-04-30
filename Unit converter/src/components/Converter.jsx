@@ -9,11 +9,6 @@ function Converter({ conversion }) {
   const [fromConvert, setFromConvert] = useState("c");
   const [toConvert, setToConvert] = useState("f");
 
-  useEffect(() => {
-      setFromConvert('');
-      setToConvert('');
-  }, [conversion])
-
 
   let keys;
   let result;

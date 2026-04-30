@@ -39,11 +39,14 @@ export const temperatureConversion = {
   ctoc: (n) => n,
   ftof: (n) => n,
   ktok: (n) => n,
-  
 };
 
 export function convertTemp(number, from, to) {
-  const conversion = `${from}to${to}`;
-  const result = from && to ? temperatureConversion[conversion](number) : 0;
-  return result;
+  if ((from == "c" || from == "k" || from == "f") && (to =='c' || to =='k' || to =='f')) {
+    const conversion = `${from}to${to}`;
+    const result = from && to ? temperatureConversion[conversion](number) : 0;
+    return result;
+  } else {
+    return 0;
+  }
 }
