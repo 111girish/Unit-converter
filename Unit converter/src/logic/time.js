@@ -1,4 +1,4 @@
-const timeConversion = {
+export const timeConversion = {
   hour: 3600,
   minute: 60,
   sec: 1,

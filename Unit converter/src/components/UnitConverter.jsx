@@ -1,6 +1,6 @@
 import "./UnitConverter.css";
 import { useState } from "react";
-import LengthConverter from "./LengthConverter";
+import Converter from "./Converter";
 
 function UnitConverter() {
   const [conversion, setConversion] = useState('mass');
@@ -20,10 +20,7 @@ function UnitConverter() {
         </select>
       </div>
       
-      {conversion == 'length' && 
-        <LengthConverter />
-      }
-      
+      <Converter conversion={conversion} />
     </div>
   );
 }

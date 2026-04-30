@@ -29,17 +29,21 @@
 //   result = (n- 273.15) * 9/5 + 32;
 // }
 
-const temperatureConversion = {
-  ctof: (n) => ((n * 9/5) + 32),
-  ftoc: (n) => ((n - 32) * 5/9),
-  ktoc: (n) => (n - 273.15),
-  ctok: (n) => (n + 273.15),
-  ftok: (n) => ((n - 32) * 5/9 + 273.15),
-  ktof: (n) => ((n- 273.15) * 9/5 + 32),
-}
+export const temperatureConversion = {
+  ctof: (n) => (n * 9) / 5 + 32,
+  ftoc: (n) => ((n - 32) * 5) / 9,
+  ktoc: (n) => n - 273.15,
+  ctok: (n) => n + 273.15,
+  ftok: (n) => ((n - 32) * 5) / 9 + 273.15,
+  ktof: (n) => ((n - 273.15) * 9) / 5 + 32,
+  ctoc: (n) => n,
+  ftof: (n) => n,
+  ktok: (n) => n,
+  
+};
 
-export function converTemp(number, from, to){
+export function convertTemp(number, from, to) {
   const conversion = `${from}to${to}`;
-  const result = temperatureConversion[conversion](number);
+  const result = from && to ? temperatureConversion[conversion](number) : 0;
   return result;
 }
