@@ -2,12 +2,12 @@ import { convertLength, lengthConversion } from "../logic/length";
 import { massConversion, convertMass } from "../logic/mass";
 import { timeConversion, convertTime } from "../logic/time";
 import { convertTemp } from "../logic/temperature";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function Converter({ conversion }) {
   const [userValue, setUserValue] = useState(0);
-  const [fromConvert, setFromConvert] = useState("c");
-  const [toConvert, setToConvert] = useState("f");
+  const [fromConvert, setFromConvert] = useState("gm");
+  const [toConvert, setToConvert] = useState("kg");
 
 
   let keys;
@@ -41,7 +41,7 @@ function Converter({ conversion }) {
             }}
           >
             {keys.map((key) => (
-              <option value={key}>{key}</option>
+              <option key={key} value={key}>{key}</option>
             ))}
           </select>
         )}
@@ -68,7 +68,7 @@ function Converter({ conversion }) {
             }}
           >
             {keys.map((key) => (
-              <option value={key}>{key}</option>
+              <option key={key} value={key}>{key}</option>
             ))}
           </select>
         )}

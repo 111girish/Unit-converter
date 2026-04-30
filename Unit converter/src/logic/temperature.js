@@ -29,7 +29,7 @@
 //   result = (n- 273.15) * 9/5 + 32;
 // }
 
-export const temperatureConversion = {
+const temperatureConversion = {
   ctof: (n) => (n * 9) / 5 + 32,
   ftoc: (n) => ((n - 32) * 5) / 9,
   ktoc: (n) => n - 273.15,
