@@ -2,12 +2,24 @@ import { convertLength, lengthConversion } from "../logic/length";
 import { massConversion, convertMass } from "../logic/mass";
 import { timeConversion, convertTime } from "../logic/time";
 import { convertTemp } from "../logic/temperature";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Converter({ conversion }) {
   const [userValue, setUserValue] = useState(0);
   const [fromConvert, setFromConvert] = useState("gm");
   const [toConvert, setToConvert] = useState("kg");
+
+  useEffect(() => {
+    if (conversion === 'temperature'){
+      setFromConvert('c');
+      setToConvert('f');
+
+    } else {
+      setFromConvert('');
+      setToConvert('');
+    }
+  }, [conversion])
+
 
 
   let keys;
