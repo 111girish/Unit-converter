@@ -4,23 +4,22 @@ import { timeConversion, convertTime } from "../logic/time";
 import { convertTemp } from "../logic/temperature";
 import { useEffect, useState } from "react";
 
+const defaultConversion = {
+  length: ["cm", "m"],
+  mass: ["gm", "kg"],
+  temperature: ["c", "f"],
+  time: ["hour", "sec"],
+};
+
 function Converter({ conversion }) {
   const [userValue, setUserValue] = useState(0);
   const [fromConvert, setFromConvert] = useState("gm");
   const [toConvert, setToConvert] = useState("kg");
 
   useEffect(() => {
-    if (conversion === 'temperature'){
-      setFromConvert('c');
-      setToConvert('f');
-
-    } else {
-      setFromConvert('');
-      setToConvert('');
-    }
-  }, [conversion])
-
-
+      setFromConvert(defaultConversion[conversion][0]);
+      setToConvert(defaultConversion[conversion][1]);
+  }, [conversion]);
 
   let keys;
   let result;
@@ -34,7 +33,10 @@ function Converter({ conversion }) {
     keys = Object.keys(timeConversion);
     result = convertTime(userValue, fromConvert, toConvert);
   } else if (conversion == "temperature") {
-    result = fromConvert && toConvert ? convertTemp(userValue, fromConvert, toConvert): 0;
+    result =
+      fromConvert && toConvert
+        ? convertTemp(userValue, fromConvert, toConvert)
+        : 0;
   }
   return (
     <>
@@ -53,7 +55,9 @@ function Converter({ conversion }) {
             }}
           >
             {keys.map((key) => (
-              <option key={key} value={key}>{key}</option>
+              <option key={key} value={key}>
+                {key}
+              </option>
             ))}
           </select>
         )}
@@ -80,7 +84,9 @@ function Converter({ conversion }) {
             }}
           >
             {keys.map((key) => (
-              <option key={key} value={key}>{key}</option>
+              <option key={key} value={key}>
+                {key}
+              </option>
             ))}
           </select>
         )}
