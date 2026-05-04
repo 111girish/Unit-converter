@@ -3,6 +3,7 @@ import { massConversion, convertMass } from "../logic/mass";
 import { timeConversion, convertTime } from "../logic/time";
 import { convertTemp } from "../logic/temperature";
 import { useEffect, useState } from "react";
+import "./Converter.css"
 
 const defaultConversion = {
   length: ["cm", "m"],
@@ -15,6 +16,11 @@ function Converter({ conversion }) {
   const [userValue, setUserValue] = useState(0);
   const [fromConvert, setFromConvert] = useState("gm");
   const [toConvert, setToConvert] = useState("kg");
+
+  function swapHandle() {
+    setFromConvert(toConvert);
+    setToConvert(fromConvert);
+  }
 
   useEffect(() => {
       setFromConvert(defaultConversion[conversion][0]);
@@ -73,6 +79,11 @@ function Converter({ conversion }) {
             <option value="k">k</option>
           </select>
         )}
+      </div>
+      <div>
+        <button onClick={swapHandle}>
+          Swap Button
+        </button>
       </div>
       <div>
         <input readOnly value={result}></input>
