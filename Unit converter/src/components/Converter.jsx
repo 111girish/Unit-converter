@@ -135,7 +135,8 @@ const defaultConversion = {
 };
 
 function Converter({ conversion }) {
-  const [userValue, setUserValue] = useState(0);
+
+  const [userValue, setUserValue] = useState("");
   const [fromConvert, setFromConvert] = useState("gm");
   const [toConvert, setToConvert] = useState("kg");
 
@@ -149,21 +150,23 @@ function Converter({ conversion }) {
     setToConvert(defaultConversion[conversion][1]);
   }, [conversion]);
 
+  const parsedValue = parseFloat(userValue);
+
   let keys;
   let result;
   if (conversion === "length") {
     keys = Object.keys(lengthConversion);
-    result = convertLength(userValue, fromConvert, toConvert);
+    result = convertLength(parsedValue, fromConvert, toConvert);
   } else if (conversion === "mass") {
     keys = Object.keys(massConversion);
-    result = convertMass(userValue, fromConvert, toConvert);
+    result = convertMass(parsedValue, fromConvert, toConvert);
   } else if (conversion === "time") {
     keys = Object.keys(timeConversion);
-    result = convertTime(userValue, fromConvert, toConvert);
+    result = convertTime(parsedValue, fromConvert, toConvert);
   } else if (conversion === "temperature") {
     result =
       fromConvert && toConvert
-        ? convertTemp(userValue, fromConvert, toConvert)
+        ? convertTemp(parsedValue, fromConvert, toConvert)
         : 0;
   }
 
@@ -177,7 +180,7 @@ function Converter({ conversion }) {
           value={userValue}
           placeholder="0"
           onChange={(e) => {
-            setUserValue(parseFloat(e.target.value) || 0);
+            setUserValue(e.target.value);
           }}
         />
         {conversion !== "temperature" && (
