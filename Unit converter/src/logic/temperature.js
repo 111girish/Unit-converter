@@ -45,7 +45,7 @@ export function convertTemp(number, from, to) {
   if ((from == "c" || from == "k" || from == "f") && (to =='c' || to =='k' || to =='f')) {
     const conversion = `${from}to${to}`;
     const result = from && to ? temperatureConversion[conversion](number) : 0;
-    return result;
+    return result.toFixed(2);
   } else {
     return 0;
   }

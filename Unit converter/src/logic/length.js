@@ -34,6 +34,6 @@ export const lengthConversion = {
 export function convertLength(number, from, to){
   const meter = number * lengthConversion[from];
   const result = meter / lengthConversion[to];
-  return result;
+  return result.toFixed(2);
 }
 
