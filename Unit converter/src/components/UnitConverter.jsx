@@ -1,4 +1,3 @@
-import "./UnitConverter.css";
 import { useState } from "react";
 import Converter from "./Converter";
 
